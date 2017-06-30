@@ -6,4 +6,7 @@ end
 
 use Rack::MethodOverride
 
+use PoemsController
+use UsersController
+use RatingsController
 run ApplicationController
