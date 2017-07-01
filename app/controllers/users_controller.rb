@@ -36,7 +36,8 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-
+    session.clear
+    redirect("/")
   end
 
   get '/users/:slug' do
