@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630142734) do
+ActiveRecord::Schema.define(version: 20170701003059) do
 
   create_table "poems", force: :cascade do |t|
     t.integer "user_id"
     t.string "content"
+    t.string "title"
   end
 
   create_table "ratings", force: :cascade do |t|

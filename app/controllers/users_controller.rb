@@ -13,7 +13,10 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-
+    if !signed_in?
+      erb :"/users/login"
+    else
+    end
   end
 
   post '/login' do
@@ -25,6 +28,9 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-
+    if signed_in?
+      @user = User.find_by_slug(params[:slug])
+      erb
+    end
   end
 end
