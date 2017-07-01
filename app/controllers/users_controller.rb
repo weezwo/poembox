@@ -27,7 +27,12 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-
+    if user = User.find_by(params)
+      session[:user_id] = user.id
+      redirect("/poems")
+    else
+      redirect("/login")
+    end
   end
 
   get '/logout' do

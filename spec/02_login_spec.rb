@@ -31,7 +31,7 @@ describe ApplicationController do
         :password => "rainbows"
       }
       post '/login', params
-      expect(session[:user_id]).to be_false
+      expect(last_response.location).to include('/login')
     end
 
   end
