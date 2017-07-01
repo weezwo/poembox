@@ -9,13 +9,20 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-
+    if params["username"].empty? || params["password"].empty? || User.find_by(username: params["username"])
+      redirect("/signup")
+    else
+      user = User.create(params)
+      session[:user_id] = user.id
+      redirect("/poems")
+    end
   end
 
   get '/login' do
     if !signed_in?
       erb :"/users/login"
     else
+      redirect("/")
     end
   end
 
