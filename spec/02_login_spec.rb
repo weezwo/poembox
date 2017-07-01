@@ -9,7 +9,7 @@ describe ApplicationController do
 
     it "displays the login form" do
       get '/login'
-      expect(last_response.body).to eq("<form")
+      expect(last_response.body).to include("<form")
     end
 
     it "displays the login form only when a user is not logged it" do
