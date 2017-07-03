@@ -6,6 +6,11 @@ class PoemsController < ApplicationController
     erb :"/poems/poems"
   end
 
+  get "/poems/top" do
+    @top_poems = Rating.group('poem_id').average(:value).sort.reverse
+    erb :"/poems/top"
+  end
+
   get "/poems/:id" do
     @poem = Poem.find_by_id(params[:id])
     @author = @poem.user
