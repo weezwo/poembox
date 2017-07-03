@@ -1,9 +1,8 @@
 class PoemsController < ApplicationController
 
   get "/poems" do
-    @poem = Poem.find_by_id(rand(Poem.all.size) + 1)
-    @author = @poem.user
-    erb :"/poems/poems"
+      @poem = Poem.find_by_id(rand(Poem.all.size) + 1) unless Poem.all.empty?
+      erb :"/poems/poems"
   end
 
   get "/poems/top" do
@@ -13,7 +12,10 @@ class PoemsController < ApplicationController
 
   get "/poems/:id" do
     @poem = Poem.find_by_id(params[:id])
-    @author = @poem.user
-    erb :"/poems/show"
+    if @poem
+      erb :"/poems/show"
+    else
+      redirect back
+    end
   end
 end
