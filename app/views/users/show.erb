@@ -1,3 +1,6 @@
-<%= @author.username %>
+Poems submitted by <%= @author.username %>
 <br><br>
-<% @author.poems.all.each %>
+<% @author.poems.all.each do |poem|%>
+  <a href="/poems/<%= poem.id %>"><%= poem.title %></a>
+  <pre><%=poem.content%></pre>
+<% end %>
