@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     self.name.downcase.split.join("-")
   end
 
-  def find_by_slug(slug)
+  def self.find_by_slug(slug)
     unslug = slug.split("-").join(" ")
     self.where('lower(name) = ?', unslug).first
   end
