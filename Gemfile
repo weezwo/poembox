@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'rake'
 gem 'bcrypt'
 gem 'sqlite3'
+gem 'pry'
 
 group :test do
   gem 'rspec'
