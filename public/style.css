@@ -1,3 +1,7 @@
+*:focus {
+    outline: none;
+}
+
 header {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
@@ -41,4 +45,13 @@ header a:hover {
 
 pre {
 	font-family: inherit;
+}
+
+input[type=text], input[type=password] {
+  font-size: 150%;
+  font-family: Raleway;
+  margin: 10px;
+  border: none;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
 }
