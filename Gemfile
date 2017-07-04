@@ -10,7 +10,8 @@ gem 'thin'
 gem 'shotgun'
 gem 'rake'
 gem 'bcrypt'
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 gem 'pry'
 
 group :test do
