@@ -1,5 +1,3 @@
-require 'net/http'
-require 'json'
 class PoemsController < ApplicationController
 
   get "/poems" do
@@ -53,6 +51,7 @@ class PoemsController < ApplicationController
       redirect back
     end
   end
+
   get "/poems/:id" do
     @poem = Poem.find_by_id(params[:id])
     if @poem

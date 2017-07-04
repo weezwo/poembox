@@ -1,4 +1,6 @@
 require './config/environment'
+require 'net/http'
+require 'json'
 
 class ApplicationController < Sinatra::Base
   configure do
