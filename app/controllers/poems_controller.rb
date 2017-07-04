@@ -37,9 +37,9 @@ class PoemsController < ApplicationController
 
     success, error_key = res.body.lines.map(&:chomp)
 
-    if success == 'true'
+    if success
       if !params["content"].empty?
-        poem = Poem.create(params)
+        poem = Poem.create(title: params["title"], content: params["content"])
         poem.user = current_user
         if params[:title].empty?
           poem.title = "Untitled"
@@ -86,6 +86,6 @@ class PoemsController < ApplicationController
   delete "/poems/:id/delete" do
     poem = Poem.find_by_id(params[:id])
     poem.delete
-    redirect("/user/#{current_user.username.slug}")
+    redirect("/users/#{current_user.slug}")
   end
 end
