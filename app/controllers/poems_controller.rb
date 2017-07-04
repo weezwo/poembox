@@ -46,8 +46,7 @@ class PoemsController < ApplicationController
   post "/poems/:id" do
     poem = Poem.find_by_id(params[:id])
     if poem.user == current_user
-      poem.title = params["title"]
-      poem.content = params["content"]
+      poem.update(params)
       poem.save
     end
     redirect "/poems/#{params[:id]}"
