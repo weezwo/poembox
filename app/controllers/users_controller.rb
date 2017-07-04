@@ -58,9 +58,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
-    if signed_in?
       @author = User.find_by_slug(params[:slug])
       erb :"users/show"
-    end
   end
 end

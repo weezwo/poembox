@@ -1,6 +1,10 @@
-<br>Poems submitted by <%= @author.username %>
+<br>Poems submitted by <%= @author.username %>:
 <br><br>
-<% @author.poems.all.each do |poem|%>
-  <div class="poem-title"><a href="/poems/<%= poem.id %>"><%= poem.title %></a></div>
-  <pre class="poem"><%=poem.content%></pre>
+<% if !@author.poems.empty? %>
+  <% @author.poems.all.each do |poem|%>
+    <div class="poem-title"><a href="/poems/<%= poem.id %>"><%= poem.title %></a></div>
+    <pre class="poem"><%=poem.content%></pre>
+  <% end %>
+<% else %>
+This user hasn't submitted any poems (yet)!
 <% end %>
