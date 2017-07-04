@@ -1,7 +1,9 @@
 class PoemsController < ApplicationController
 
   get "/poems" do
-      @poem = Poem.find_by_id(rand(1..Poem.all.size)) unless Poem.all.empty?
+      while @poem.nil?
+        @poem = Poem.find_by_id(rand(1..Poem.last.id)) unless Poem.all.empty?
+      end
       erb :"/poems/poems"
   end
 
