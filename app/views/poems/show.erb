@@ -1,12 +1,10 @@
-<%= @poem.title %>
-<pre><%=@poem.content%></pre>
-- <%= @poem.user.username %>
+<div class="poem-title"><%= @poem.title %></div>
+<pre class="poem"><%=@poem.content%></pre>
+<div class="poem-author">- <a href="/users/<%= poem.user.slug %>"><%= poem.user.username %></div></a>
 <br>
-<form action="/ratings/<%= @poem.id %>" method="post">
 
-
+<form class="ratings" action="/ratings/<%= @poem.id %>" method="post">
 <button type="submit" name="rating" value="up"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
-
 <button type="submit" name="rating" value="down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 </form>
 

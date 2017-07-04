@@ -1,6 +1,6 @@
 <% @top_poems[0..5].each_with_index do |rated_poem, i| %>
   <% poem = Poem.find_by_id(rated_poem[0]) %>
-    <%= "#{i+1}. " %><a href="/poems/<%= poem.id %>"><%= poem.title %></a>
-    <pre><%=poem.content%></pre>
-    - <%= poem.user.username %>
+    <div class="poem-title"><%= "#{i+1}. " %><a href="/poems/<%= poem.id %>"><%= poem.title %></a></div>
+    <pre class="poem"><%=poem.content%></pre>
+    <div class="poem-author">- <a href="/users/<%= poem.user.slug %>"><%= poem.user.username %></div></a>
 <% end %>
