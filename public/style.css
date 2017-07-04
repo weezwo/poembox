@@ -55,3 +55,12 @@ input[type=text], input[type=password] {
   width: 100%;
   border-bottom: 2px solid #ddd;
 }
+
+textarea {
+  font-size: 150%;
+  font-family: serif;
+  margin: 10px;
+  border: none;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+}
