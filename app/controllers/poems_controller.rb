@@ -1,13 +1,28 @@
 class PoemsController < ApplicationController
 
   get "/poems" do
-      @poem = Poem.find_by_id(rand(Poem.all.size) + 1) unless Poem.all.empty?
+      @poem = Poem.find_by_id(rand(1..Poem.all.size)) unless Poem.all.empty?
       erb :"/poems/poems"
   end
 
   get "/poems/top" do
     @top_poems = Rating.group('poem_id').average(:value).sort.reverse
     erb :"/poems/top"
+  end
+
+  get "/poems/new" do
+    if signed_in?
+      erb :"/poems/new"
+    else
+      redirect("/poems")
+    end
+  end
+
+  post "/poems" do
+    poem = Poem.create(params)
+    poem.user = current_user
+    poem.save
+    redirect("/poems/#{poem.id}")
   end
 
   get "/poems/:id" do
