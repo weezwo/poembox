@@ -1,3 +1,4 @@
+<% if !@poem.nil? %>
 <div class="poem-title"><a href="/poems/<%= @poem.id %>"><%= @poem.title %></a></div>
 <pre class="poem"><%=@poem.content%></pre>
 <div class="poem-author">- <a href="/users/<%= @poem.user.slug %>"><%= @poem.user.username %></div></a>
@@ -6,3 +7,6 @@
 <button type="submit" name="rating" value="up"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
 <button type="submit" name="rating" value="down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 </form>
+<% else %>
+There are no poems!! Go write one!
+<% end %>
