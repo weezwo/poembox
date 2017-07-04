@@ -21,10 +21,17 @@ class PoemsController < ApplicationController
   end
 
   post "/poems" do
-    poem = Poem.create(params)
-    poem.user = current_user
-    poem.save
-    redirect("/poems/#{poem.id}")
+    if !params["content"].empty?
+      poem = Poem.create(params)
+      poem.user = current_user
+      if params[:title].empty?
+        poem.title = "Untitled"
+      end
+      poem.save
+      redirect("/poems/#{poem.id}")
+    else
+      redirect back
+    end
   end
 
   get "/poems/:id" do
@@ -47,8 +54,11 @@ class PoemsController < ApplicationController
 
   post "/poems/:id" do
     poem = Poem.find_by_id(params[:id])
-    if poem.user == current_user
+    if poem.user == current_user && !params["content"].empty?
       poem.update(params)
+      if params[:title].empty?
+        poem.title = "Untitled"
+      end
       poem.save
     end
     redirect "/poems/#{params[:id]}"
