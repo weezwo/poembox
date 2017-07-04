@@ -9,3 +9,11 @@
 
 <button type="submit" name="rating" value="down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 </form>
+
+<% if @poem.user == current_user %>
+  <a href="/poems/<%= @poem.id %>/edit"><button type="button" name="Edit">Edit</button></a>
+  <form action="/poems/<%= @poem.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <button type="submit" title="Delete">Delete</button>
+  </form>
+<% end %>
