@@ -2,6 +2,10 @@
     outline: none;
 }
 
+body {
+  font-family: "Raleway";
+}
+
 header {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
@@ -26,13 +30,18 @@ header a:hover {
   text-shadow: 0 0 4px #666;
 }
 
+main {
+  width: 70%;
+  margin: auto;
+}
+
 .poem-title {
   text-transform: uppercase;
 }
 
 .poem {
 	font-size: 26px;
-	width: 33%;
+	width: 90%;
 	margin: auto;
 	line-height: 1.50em;
 	font-family: serif;
@@ -41,6 +50,11 @@ header a:hover {
 
 .poem::first-letter {
 	font-size: 175%;
+}
+
+.poem-author {
+  text-align: right;
+  width: 90%;
 }
 
 pre {
@@ -63,4 +77,5 @@ textarea {
   border: none;
   width: 100%;
   border-bottom: 2px solid #ddd;
+  resize: vertical;
 }
