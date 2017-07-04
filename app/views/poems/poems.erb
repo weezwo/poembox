@@ -2,10 +2,7 @@
 <pre class="poem"><%=@poem.content%></pre>
 <div class="poem-author">- <%= @poem.user.username %></div>
 <br>
-<form action="/ratings/<%= @poem.id %>" method="post">
-
-
+<form class="ratings" action="/ratings/<%= @poem.id %>" method="post">
 <button type="submit" name="rating" value="up"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
-
 <button type="submit" name="rating" value="down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 </form>

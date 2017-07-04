@@ -6,6 +6,11 @@ body {
   font-family: "Raleway";
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 header {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
@@ -18,8 +23,6 @@ header h1 {
 }
 
 header a {
-  text-decoration: none;
-  color: #000;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   display: inline-block;
@@ -37,6 +40,7 @@ main {
 
 .poem-title {
   text-transform: uppercase;
+  padding: 25px 0;
 }
 
 .poem {
@@ -54,7 +58,12 @@ main {
 
 .poem-author {
   text-align: right;
+  width: 80%;
+}
+
+.ratings {
   width: 90%;
+  text-align: right;
 }
 
 pre {
