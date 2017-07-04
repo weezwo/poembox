@@ -33,4 +33,23 @@ class PoemsController < ApplicationController
       redirect back
     end
   end
+
+  get "/poems/:id/edit" do
+    @poem = Poem.find_by_id(params[:id])
+    if @poem.user == current_user
+      erb :"/poems/edit"
+    else
+      redirect back
+    end
+  end
+
+  post "/poems/:id" do
+    poem = Poem.find_by_id(params[:id])
+    if poem.user == current_user
+      poem.title = params["title"]
+      poem.content = params["content"]
+      poem.save
+    end
+    redirect "/poems/#{params[:id]}"
+  end
 end

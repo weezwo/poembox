@@ -1,5 +1,5 @@
-<form action="/poems/edit/<%=@poem.id%>" method="post">
+<form action="/poems/<%=@poem.id%>" method="post">
   <input type="text" name="title" placeholder="Title" value="<%= @poem.title %>">
-  <textarea name="comment" form="form" rows="10" placeholder="Your Opus Here"><%= @poem.content %></textarea>
-  <input type="submit" title="submit" value="Post">
+  <textarea name="content" form="form" rows="10" placeholder="Your Opus Here"><%= @poem.content %></textarea>
+  <input type="submit" title="submit" value="Edit">
 </form>
