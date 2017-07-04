@@ -51,4 +51,10 @@ class PoemsController < ApplicationController
     end
     redirect "/poems/#{params[:id]}"
   end
+
+  delete "/poems/:id/delete" do
+    poem = Poem.find_by_id(params[:id])
+    poem.delete
+    redirect("/user/#{current_user.username.slug}")
+  end
 end
