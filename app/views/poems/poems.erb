@@ -1,6 +1,6 @@
 <div class="poem-title"><%= @poem.title %></div>
 <pre class="poem"><%=@poem.content%></pre>
-- <%= @poem.user.username %>
+<div class="poem-author">- <%= @poem.user.username %></div>
 <br>
 <form action="/ratings/<%= @poem.id %>" method="post">
 
