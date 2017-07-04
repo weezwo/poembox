@@ -79,3 +79,20 @@ textarea {
   border-bottom: 2px solid #ddd;
   resize: vertical;
 }
+
+button, input[type=submit] {
+  font-size: 150%;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .5s ease-in-out;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 15px;
+  font-family: "Raleway";
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+button:hover, input[type=submit]:hover{
+  color: #fff;
+  background-color: #000;
+}
