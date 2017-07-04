@@ -10,7 +10,7 @@ class PoemsController < ApplicationController
   end
 
   get "/poems/top" do
-    @top_poems = Rating.group('poem_id').average(:value).sort.reverse
+    @top_poems = Rating.group('poem_id').average(:value).sort_by{|arr| arr[1]}.reverse
     erb :"/poems/top"
   end
 
@@ -84,7 +84,9 @@ class PoemsController < ApplicationController
 
   delete "/poems/:id/delete" do
     poem = Poem.find_by_id(params[:id])
+    ratings = Rating.where(poem_id: poem.id)
     poem.delete
+    ratings.each {|rating| rating.delete}
     redirect("/users/#{current_user.slug}")
   end
 end
