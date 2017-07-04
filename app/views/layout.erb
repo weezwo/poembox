@@ -3,11 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>PoemBox - The Online Poetry Treasury</title>
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway' type='text/css'>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway" type="text/css">
+    <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   </head>
   <body>
+    <header>
+      <h1>PoemBox</h1>
+      <% if !signed_in? %>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Log In</a>
+      <% else %>
+        <a href="/poems/new">New</a>
+        <a href="/poems">Random</a>
+        <a href="/poems/top">Top</a>
+        <a href="/logout">Log Out</a>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
