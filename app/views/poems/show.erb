@@ -1,17 +1,16 @@
 <div class="poem-title"><%= @poem.title %></div>
 <pre class="poem"><%=@poem.content%></pre>
-<div class="poem-author">- <a href="/users/<%= poem.user.slug %>"><%= poem.user.username %></div></a>
+<div class="poem-author">- <a href="/users/<%= @poem.user.slug %>"><%= @poem.user.username %></div></a>
 <br>
 
 <form class="ratings" action="/ratings/<%= @poem.id %>" method="post">
 <button type="submit" name="rating" value="up"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
 <button type="submit" name="rating" value="down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
 </form>
-
 <% if @poem.user == current_user %>
-  <a href="/poems/<%= @poem.id %>/edit"><button type="button" name="Edit">Edit</button></a>
   <form action="/poems/<%= @poem.id %>/delete" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <button type="submit" title="Delete">Delete</button>
   </form>
+  <a href="/poems/<%= @poem.id %>/edit"><button type="button" name="Edit">Edit</button></a>
 <% end %>

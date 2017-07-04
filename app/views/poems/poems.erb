@@ -1,6 +1,6 @@
-<div class="poem-title"><%= @poem.title %></div>
+<div class="poem-title"><a href="/poems/<%= @poem.id %>"><%= @poem.title %></a></div>
 <pre class="poem"><%=@poem.content%></pre>
-<div class="poem-author">- <a href="/users/<%= poem.user.slug %>"><%= poem.user.username %></div></a>
+<div class="poem-author">- <a href="/users/<%= @poem.user.slug %>"><%= @poem.user.username %></div></a>
 <br>
 <form class="ratings" action="/ratings/<%= @poem.id %>" method="post">
 <button type="submit" name="rating" value="up"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
