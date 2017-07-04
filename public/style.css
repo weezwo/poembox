@@ -90,15 +90,17 @@ textarea {
 }
 
 button, input[type=submit] {
-  font-size: 150%;
+  font-size: 125%;
   -webkit-transition: all .3s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
   background-color: #fff;
-  border: 2px solid black;
-  border-radius: 15px;
+  /*border: 2px solid black;*/
+  border: none;
+  border-radius: 5px;
   font-family: "Raleway";
   display: inline-block;
   padding: 5px 10px;
+  float: right;
 }
 
 button:hover, input[type=submit]:hover{
