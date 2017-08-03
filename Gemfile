@@ -13,6 +13,7 @@ gem 'rake'
 gem 'bcrypt'
 gem 'pg'
 gem 'pry'
+gem 'rack'
 
 gem 'sqlite3', :group => :development
 
