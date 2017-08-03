@@ -9,26 +9,11 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    res = Net::HTTP.post_form(
-    URI.parse('http://www.google.com/recaptcha/api/verify'),
-    {
-      'privatekey' => '6Ldt5icUAAAAADMgPkDRpb5S3sZWvDoSH0Va7Dax',
-      'remoteip'   => request.ip,
-      'challenge'  => params[:recaptcha_challenge_field],
-      'response'   => params[:recaptcha_response_field]
-    }
-    )
-
-    success, error_key = res.body.lines.map(&:chomp)
-
-    if success
-      if params["username"].empty? || params["password"].empty? || User.find_by(username: params["username"])
-        redirect("/signup")
-      else
-        user = User.create(username: params["username"], password: params["password"])
-        session[:user_id] = user.id
-        redirect("/poems")
-      end
+    is_valid = Captcha.is_valid?(request.ip, params)
+    user = User.new(params[:user])
+    if is_valid && user.save
+      session[:user_id] = user.id
+      redirect("/")
     else
       redirect back
     end

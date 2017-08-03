@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_secure_password
   validates :username, uniqueness: true
+  validates :username, presence: true
 
   def slug
     self.username.downcase.split.join("-")

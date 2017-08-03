@@ -16,6 +16,7 @@ class PoemsController < ApplicationController
 
   get "/poems/new" do
     if signed_in?
+      @poem = Poem.new
       erb :"/poems/new"
     else
       redirect("/poems")
@@ -23,32 +24,11 @@ class PoemsController < ApplicationController
   end
 
   post "/poems" do
-    res = Net::HTTP.post_form(
-    URI.parse('http://www.google.com/recaptcha/api/verify'),
-    {
-      'privatekey' => '6Ldt5icUAAAAADMgPkDRpb5S3sZWvDoSH0Va7Dax',
-      'remoteip'   => request.ip,
-      'challenge'  => params[:recaptcha_challenge_field],
-      'response'   => params[:recaptcha_response_field]
-    }
-    )
-
-    success, error_key = res.body.lines.map(&:chomp)
-
-    if success
-      if !params["content"].empty?
-        poem = Poem.create(title: params["title"], content: params["content"])
-        poem.user = current_user
-        if params[:title].empty?
-          poem.title = "Untitled"
-        end
-        poem.save
-        redirect("/poems/#{poem.id}")
-      else
-        redirect back
-      end
+    @poem = current_user.poems.build(params[:poem])
+    if Captcha.is_valid?(request.ip, params) && @poem.save
+      redirect("/poems/#{@poem.id}")
     else
-      redirect back
+      erb :'/poems/new'
     end
   end
 
