@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+ruby '2.4.0'
 source "https://rubygems.org"
 
 gem 'sinatra'
@@ -10,8 +11,10 @@ gem 'thin'
 gem 'shotgun'
 gem 'rake'
 gem 'bcrypt'
-gem 'sqlite3'
+gem 'pg'
 gem 'pry'
+
+gem 'sqlite3', :group => :development
 
 group :test do
   gem 'rspec'

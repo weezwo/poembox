@@ -13,10 +13,8 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     if is_valid && user.save
       session[:user_id] = user.id
-      redirect("/")
-    else
-      redirect back
     end
+    redirect("/")
   end
 
   get '/login' do

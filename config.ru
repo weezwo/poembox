@@ -10,3 +10,4 @@ use PoemsController
 use UsersController
 use RatingsController
 run ApplicationController
+run Sinatra::Application
